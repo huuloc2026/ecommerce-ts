@@ -1,6 +1,9 @@
 import * as express from "express";
 import * as mongoose from "mongoose";
 import UserRouter from "./routes/UserRouter";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 export class Server {
   public app: express.Application = express();
@@ -11,13 +14,9 @@ export class Server {
   }
   setConfig() {}
   connectMongoDB() {
-    mongoose
-      .connect(
-        "mongodb+srv://huuloc2026:sCUzElmeUrRc8ToW@cluster0.20izq.mongodb.net/"
-      )
-      .then(() => {
-        console.log("Connected db");
-      });
+    mongoose.connect(process.env.MONGODB_URI).then(() => {
+      console.log("Connected db");
+    });
   }
   setRoutes() {
     this.app.use("/api/user/", UserRouter);
