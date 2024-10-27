@@ -1,5 +1,7 @@
 console.clear();
-console.log("Hello World 2");
-import * as express from "express";
-
-let app: express.Application = express();
+import { Server } from "./server";
+let server = new Server().app;
+let port = 5000;
+server.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port} `);
+});
