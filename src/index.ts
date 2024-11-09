@@ -1,5 +1,4 @@
 import { Server } from "./server";
-
 console.clear()
 require('dotenv').config()
 let server = new Server().app;
