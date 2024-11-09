@@ -1,5 +1,5 @@
 import { Environment } from "./environment";
-
+require('dotenv').config()
 const InforDatabase = {
     Username: process.env.MONGODB_USERNAME,
     password: process.env.MONGODB_PASSWORD,
@@ -7,4 +7,4 @@ const InforDatabase = {
 }
 export const DevEnvironment:Environment  = {
     db_uri: `mongodb+srv://${InforDatabase.Username}:${InforDatabase.password}@cluster0.20izq.mongodb.net/${InforDatabase.Database_NAME}?retryWrites=true&w=majority`,
-};
+}; 
