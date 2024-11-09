@@ -1,37 +1,30 @@
-
-import { validationResult } from "express-validator";
 import User from "../models/User";
+import { Util } from "../utils/Utils";
 
 export class UserController {
-    static signup(req, res,next)  {
-        // const error = new Error("User email or password does not match")
-        // next(error)
-        // res.status(200).send("success")
-        // res.send(req.body)
-        const {email,password} = req.body;
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array().map(x => x.msg) });
-        }
-        const user = new User({
-            email,
-            password
-        })
-        user.save()
-        .then((user)=>{
-            res.send(user)
-        })
-        .catch(e=>
-            next(e)
-        )
+  static async signup(req, res, next) {
+    const { name, phone, email, password, type, status } = req.body;
+    const dataInput = {
+      name,
+      verify_token: Util.randomNumber(100000, 999999),
+      verifycation_token_time: Date.now() + new Util().MAX_TOKEN_TIME,
+      phone,
+      email,
+      password,
+      type,
+      status,
+    };
+    try {
+      const user = new User(dataInput).save();
+      res.status(200).json({ user });
+    } catch (error) {
+      next(error);
     }
-    static test(req,res,next){
-        console.log("this is test")
-        next();
-    }
-    
-    static test2(req,res){
-        res.status(200).send("this is test 2")
-    }
+  }
 
+  static verify(req, res, next) {
+    const { email, verification_token } = req.body;
+    User;
+    // res.status(200).send("this is test 2");
+  }
 }
