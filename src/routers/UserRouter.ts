@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { UserController } from "../controllers/UserController";
+import { UserValidators } from "../validators/UserValidator";
 
 class UserRouter {
   public router: Router;
@@ -12,7 +13,7 @@ class UserRouter {
     this.deleteRouter();
   }
   getRouter() {
-    this.router.get("/login",UserController.login);
+    this.router.get("/signup", UserValidators.signup(), UserController.signup);
     this.router.get("/test", UserController.test,UserController.test2);
   }
   postRouter() {}
