@@ -1,0 +1,28 @@
+{
+  "name": "swiggycloneapp",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^22.8.1",
+    "@types/nodemon": "^1.19.6",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-validator": "^7.2.0",
+    "mongoose": "^8.7.3",
+    "node": "^23.1.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
